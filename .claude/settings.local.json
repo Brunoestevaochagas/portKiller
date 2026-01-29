@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(rustc:*)",
+      "Bash(pnpm --version:*)",
+      "Bash(npm install:*)",
+      "Bash(cmd.exe /c \"rustc --version\")",
+      "Bash(cmd.exe /c \"start https://rustup.rs\")",
+      "Bash(powershell.exe -Command \"rustc --version\")",
+      "Bash(powershell.exe -Command \"& ''$env:USERPROFILE\\\\.cargo\\\\bin\\\\rustc.exe'' --version\")",
+      "Bash(powershell.exe -Command \"Test-Path ''C:\\\\Users\\\\Bruno\\\\.cargo\\\\bin\\\\rustc.exe''\")",
+      "Bash(powershell.exe -Command \"C:\\\\Users\\\\Bruno\\\\.cargo\\\\bin\\\\rustc.exe --version\")",
+      "Bash(npx create-tauri-app@latest . --template react-ts --manager pnpm --yes)",
+      "Bash(powershell.exe -Command:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(pnpm tauri dev:*)",
+      "Bash(cmd.exe /c \"D:\\\\projetos\\\\portKiller\\\\run-dev.bat\")",
+      "Bash(PATH=\"$PATH:/c/Users/Bruno/.cargo/bin\")",
+      "Bash(cargo:*)",
+      "Bash(export PATH=\"$PATH:/c/Users/Bruno/.cargo/bin\")"
+    ]
+  }
+}
