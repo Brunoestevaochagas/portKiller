@@ -1,7 +1,8 @@
 {
-  "name": "portkiller-temp",
+  "name": "portkiller",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Cross-platform desktop app to monitor open ports and kill processes",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -26,5 +27,19 @@
     "tailwindcss": "^3.4.19",
     "typescript": "~5.8.3",
     "vite": "^7.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brunoestevaochagas/portKiller.git"
+  },
+  "keywords": [
+    "port",
+    "kill",
+    "process",
+    "monitor",
+    "tauri",
+    "desktop"
+  ],
+  "author": "",
+  "license": "MIT"
 }

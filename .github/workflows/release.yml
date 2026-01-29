@@ -6,6 +6,9 @@ on:
       - 'v*'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
@@ -37,7 +40,7 @@ jobs:
           node-version: 20
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
@@ -65,15 +68,15 @@ jobs:
           releaseBody: |
             ## Downloads
 
-            | Platform | Download |
-            |----------|----------|
+            | Platform | File |
+            |----------|------|
             | Windows | `.msi` or `.exe` |
             | macOS (Apple Silicon) | `-aarch64.dmg` |
             | macOS (Intel) | `-x64.dmg` |
             | Linux | `.deb` or `.AppImage` |
 
-            ## What's New
-            See the commits for details.
+            ## Changes
+            See commit history for details.
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.args }}

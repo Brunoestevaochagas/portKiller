@@ -1,6 +1,6 @@
 # PortKiller
 
-Aplicativo desktop multiplataforma para monitorar portas abertas e encerrar processos. Interface minimalista e moderna.
+A cross-platform desktop application to monitor open ports and kill processes. Minimal and modern interface.
 
 ![Tauri](https://img.shields.io/badge/Tauri-2.x-blue)
 ![React](https://img.shields.io/badge/React-19-61dafb)
@@ -8,145 +8,166 @@ Aplicativo desktop multiplataforma para monitorar portas abertas e encerrar proc
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.x-38bdf8)
 ![Platforms](https://img.shields.io/badge/Platforms-Windows%20%7C%20macOS%20%7C%20Linux-green)
 
-## Funcionalidades
+## Features
 
-- Listar todas as portas abertas (TCP/UDP)
-- Busca em tempo real por porta, processo ou endereço
-- Filtros avançados (protocolo, estado, processos do sistema)
-- Encerrar processos com confirmação
-- Auto-refresh a cada 5 segundos
-- Ordenação por qualquer coluna
-- Interface dark mode
+- List all open ports (TCP/UDP)
+- Real-time search by port, process, or address
+- Advanced filters (protocol, state, system processes)
+- Kill processes with confirmation
+- Auto-refresh every 5 seconds
+- Sortable columns
+- Dark mode interface
 
-## Plataformas Suportadas
+## Supported Platforms
 
-| Plataforma | Comando de Portas | Comando Kill |
-|------------|-------------------|--------------|
+| Platform | Port Command | Kill Command |
+|----------|--------------|--------------|
 | Windows | `netstat -ano` | `taskkill /PID` |
 | Linux | `ss -tulnp` | `kill -9` |
 | macOS | `lsof -iTCP -iUDP` | `kill -9` |
 
 ## Download
 
-Baixe a versão mais recente na [página de Releases](../../releases).
+Download the latest version from the [Releases page](https://github.com/Brunoestevaochagas/portKiller/releases).
 
-| Plataforma | Arquivo |
-|------------|---------|
-| Windows | `.msi` ou `.exe` |
-| macOS (Apple Silicon) | `-aarch64.dmg` |
-| macOS (Intel) | `-x64.dmg` |
-| Linux | `.deb` ou `.AppImage` |
+| Platform | File |
+|----------|------|
+| Windows | `PortKiller_x.x.x_x64-setup.exe` or `.msi` |
+| macOS (Apple Silicon) | `PortKiller_x.x.x_aarch64.dmg` |
+| macOS (Intel) | `PortKiller_x.x.x_x64.dmg` |
+| Linux | `portkiller_x.x.x_amd64.deb` or `.AppImage` |
 
-## Desenvolvimento
+## Development
 
-### Pré-requisitos
+### Prerequisites
 
 - **Node.js** 18+ ([nodejs.org](https://nodejs.org/))
 - **Rust** ([rustup.rs](https://rustup.rs/))
 - **pnpm** (`npm install -g pnpm`)
 
-#### Linux (dependências adicionais)
+#### Platform-specific dependencies
+
+<details>
+<summary><strong>Windows</strong></summary>
+
+No additional dependencies required. Make sure Rust is in your PATH:
+
+```powershell
+# Add Rust to PATH permanently
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:USERPROFILE\.cargo\bin", "User")
+# Restart your terminal after running this command
+```
+
+</details>
+
+<details>
+<summary><strong>Linux (Ubuntu/Debian)</strong></summary>
 
 ```bash
+sudo apt update
 sudo apt install libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
 ```
 
-### Instalação
+</details>
+
+<details>
+<summary><strong>macOS</strong></summary>
 
 ```bash
-git clone https://github.com/seu-usuario/portKiller.git
+xcode-select --install
+```
+
+</details>
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/Brunoestevaochagas/portKiller.git
 cd portKiller
+
+# Install dependencies
 pnpm install
 ```
 
-### Executar em modo desenvolvimento
+### Running in Development
 
 ```bash
-# Windows (se Rust não está no PATH)
-.\run-dev.bat
-
-# Ou diretamente
 pnpm tauri dev
 ```
 
-### Build para produção
+### Building for Production
 
 ```bash
-# Windows
-.\build.bat
-
-# Ou diretamente
 pnpm tauri build
 ```
 
-Os instaladores serão gerados em `src-tauri/target/release/bundle/`.
+Installers will be generated in `src-tauri/target/release/bundle/`.
 
-## Estrutura do Projeto
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `F5` | Refresh port list |
+| `Escape` | Clear search |
+
+## Project Structure
 
 ```
 portKiller/
-├── src/                      # Frontend React
+├── src/                          # React frontend
 │   ├── components/
-│   │   ├── PortTable.tsx     # Tabela de portas
-│   │   ├── SearchBar.tsx     # Campo de busca
-│   │   ├── FilterBar.tsx     # Filtros avançados
-│   │   ├── KillButton.tsx    # Botão encerrar processo
-│   │   └── StatusBar.tsx     # Barra de status
+│   │   ├── PortTable.tsx         # Port data table
+│   │   ├── SearchBar.tsx         # Search input
+│   │   ├── FilterBar.tsx         # Advanced filters
+│   │   ├── KillButton.tsx        # Kill process button
+│   │   └── StatusBar.tsx         # Status bar
 │   ├── hooks/
-│   │   └── usePortData.ts    # Hook para dados de portas
+│   │   └── usePortData.ts        # Port data hook
 │   ├── types/
-│   │   └── port.ts           # Tipos TypeScript
-│   ├── App.tsx               # Componente principal
-│   └── index.css             # Estilos Tailwind
+│   │   └── port.ts               # TypeScript types
+│   ├── App.tsx                   # Main component
+│   └── index.css                 # Tailwind styles
 │
-├── src-tauri/                # Backend Rust
+├── src-tauri/                    # Rust backend
 │   ├── src/
-│   │   ├── main.rs           # Entry point
-│   │   └── lib.rs            # Comandos Tauri (multiplataforma)
-│   ├── Cargo.toml            # Dependências Rust
-│   └── tauri.conf.json       # Configuração Tauri
+│   │   ├── main.rs               # Entry point
+│   │   └── lib.rs                # Tauri commands (cross-platform)
+│   ├── Cargo.toml                # Rust dependencies
+│   └── tauri.conf.json           # Tauri configuration
 │
-├── .github/workflows/        # CI/CD
-│   └── release.yml           # Build automático multiplataforma
+├── .github/workflows/            # CI/CD
+│   └── release.yml               # Multi-platform build
 │
-├── build.bat                 # Script de build (Windows)
-├── run-dev.bat               # Script de dev (Windows)
-└── package.json              # Dependências Node
+└── package.json                  # Node dependencies
 ```
 
-## Atalhos de Teclado
+## CI/CD - Automated Builds
 
-| Atalho | Ação |
-|--------|------|
-| `F5` | Atualizar lista de portas |
-| `Escape` | Limpar campo de busca |
+The project uses GitHub Actions to automatically build for all platforms.
 
-## CI/CD - Build Automático
-
-O projeto usa GitHub Actions para compilar automaticamente para todas as plataformas.
-
-### Criar uma release:
+### Creating a Release
 
 ```bash
 git tag v1.0.0
 git push origin v1.0.0
 ```
 
-Isso dispara o workflow que:
-1. Compila para Windows, macOS (Intel + Apple Silicon) e Linux
-2. Cria um draft de release com todos os binários
+This triggers a workflow that:
+1. Builds for Windows, macOS (Intel + Apple Silicon), and Linux
+2. Creates a draft release with all binaries at [Releases](https://github.com/Brunoestevaochagas/portKiller/releases)
 
-## Tecnologias
+## Tech Stack
 
-- **Tauri 2** - Framework desktop multiplataforma (Rust + WebView)
-- **React 19** - Biblioteca UI
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS 3** - Estilização
-- **Lucide React** - Ícones
-- **sysinfo** (Rust) - Informações de processos
-- **regex** (Rust) - Parsing de saída de comandos
+- **Tauri 2** - Cross-platform desktop framework (Rust + WebView)
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Tailwind CSS 3** - Styling
+- **Lucide React** - Icons
+- **sysinfo** (Rust) - Process information
+- **regex** (Rust) - Command output parsing
 - **tokio** (Rust) - Async runtime
 
-## Licença
+## License
 
 MIT
