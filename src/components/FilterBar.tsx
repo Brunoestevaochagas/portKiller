@@ -57,7 +57,7 @@ export function FilterBar({ filters, onChange, portCount }: FilterBarProps) {
         }`}
       >
         <Filter className="w-4 h-4" />
-        <span className="text-sm">Filtros</span>
+        <span className="text-sm">Filters</span>
         {activeFiltersCount > 0 && (
           <span className="flex items-center justify-center w-5 h-5 text-xs font-bold bg-accent text-surface rounded-full">
             {activeFiltersCount}
@@ -82,13 +82,13 @@ export function FilterBar({ filters, onChange, portCount }: FilterBarProps) {
             {/* Protocol Filter */}
             <div className="mb-4">
               <label className="block text-xs font-medium text-text-muted uppercase tracking-wide mb-2">
-                Protocolo
+                Protocol
               </label>
               <div className="flex gap-2">
                 {(['all', 'TCP', 'UDP'] as const).map((proto) => (
                   <FilterButton
                     key={proto}
-                    label={proto === 'all' ? 'Todos' : proto}
+                    label={proto === 'all' ? 'All' : proto}
                     value={proto}
                     current={filters.protocol}
                     onClick={() => onChange({ ...filters, protocol: proto })}
@@ -100,12 +100,12 @@ export function FilterBar({ filters, onChange, portCount }: FilterBarProps) {
             {/* State Filter */}
             <div className="mb-4">
               <label className="block text-xs font-medium text-text-muted uppercase tracking-wide mb-2">
-                Estado
+                State
               </label>
               <div className="flex flex-wrap gap-2">
                 {(
                   [
-                    { value: 'all', label: 'Todos' },
+                    { value: 'all', label: 'All' },
                     { value: 'LISTENING', label: 'Listening' },
                     { value: 'ESTABLISHED', label: 'Established' },
                     { value: 'TIME_WAIT', label: 'Time Wait' },
@@ -143,7 +143,7 @@ export function FilterBar({ filters, onChange, portCount }: FilterBarProps) {
                   />
                 </div>
                 <span className="text-sm text-text group-hover:text-accent transition-colors">
-                  Mostrar processos do sistema
+                  Show system processes
                 </span>
               </label>
             </div>
@@ -154,7 +154,7 @@ export function FilterBar({ filters, onChange, portCount }: FilterBarProps) {
             {/* Footer */}
             <div className="flex items-center justify-between">
               <span className="text-xs text-text-dim">
-                {portCount} resultado{portCount !== 1 ? 's' : ''}
+                {portCount} result{portCount !== 1 ? 's' : ''}
               </span>
               <button
                 onClick={() =>
@@ -166,7 +166,7 @@ export function FilterBar({ filters, onChange, portCount }: FilterBarProps) {
                 }
                 className="text-xs text-accent hover:text-accent-hover transition-colors"
               >
-                Limpar filtros
+                Clear filters
               </button>
             </div>
           </div>

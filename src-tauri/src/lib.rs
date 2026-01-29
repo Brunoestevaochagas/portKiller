@@ -29,6 +29,7 @@ struct AppState {
     system: Mutex<System>,
 }
 
+#[cfg(windows)]
 fn parse_address(addr: &str) -> (String, u16) {
     if let Some(last_colon) = addr.rfind(':') {
         let ip = &addr[..last_colon];

@@ -8,7 +8,7 @@ interface StatusBarProps {
 
 export function StatusBar({ portCount, lastUpdate, error }: StatusBarProps) {
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('pt-BR', {
+    return date.toLocaleTimeString('en-US', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
@@ -19,11 +19,11 @@ export function StatusBar({ portCount, lastUpdate, error }: StatusBarProps) {
     <div className="flex items-center justify-between px-4 py-2 bg-surface border-t border-surface-lighter text-xs">
       <div className="flex items-center gap-4">
         <span className="text-text-muted">
-          {portCount} porta{portCount !== 1 ? 's' : ''}
+          {portCount} port{portCount !== 1 ? 's' : ''}
         </span>
         {lastUpdate && (
           <span className="text-text-dim">
-            Atualizado: {formatTime(lastUpdate)}
+            Updated: {formatTime(lastUpdate)}
           </span>
         )}
       </div>

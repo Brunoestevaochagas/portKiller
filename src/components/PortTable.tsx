@@ -65,7 +65,7 @@ export function PortTable({ ports, loading, onKill }: PortTableProps) {
   if (loading && ports.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-text-muted">
-        <div className="animate-pulse">Carregando portas...</div>
+        <div className="animate-pulse">Loading ports...</div>
       </div>
     );
   }
@@ -76,13 +76,13 @@ export function PortTable({ ports, loading, onKill }: PortTableProps) {
         <thead className="bg-surface sticky top-0">
           <tr className="border-b border-surface-lighter">
             <HeaderCell column="protocol" label="Proto" className="w-20" />
-            <HeaderCell column="localPort" label="Porta" className="w-24" />
-            <HeaderCell column="localAddress" label="Endereço" />
-            <HeaderCell column="state" label="Estado" className="w-32" />
-            <HeaderCell column="processName" label="Processo" />
+            <HeaderCell column="localPort" label="Port" className="w-24" />
+            <HeaderCell column="localAddress" label="Address" />
+            <HeaderCell column="state" label="State" className="w-32" />
+            <HeaderCell column="processName" label="Process" />
             <HeaderCell column="pid" label="PID" className="w-24" />
             <th className="px-4 py-3 text-left text-xs font-medium text-text-muted uppercase tracking-wider w-20">
-              Ação
+              Action
             </th>
           </tr>
         </thead>
@@ -143,7 +143,7 @@ export function PortTable({ ports, loading, onKill }: PortTableProps) {
       </table>
       {sortedPorts.length === 0 && (
         <div className="flex items-center justify-center py-12 text-text-muted">
-          Nenhuma porta encontrada
+          No ports found
         </div>
       )}
     </div>

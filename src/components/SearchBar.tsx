@@ -15,7 +15,7 @@ export function SearchBar({ value, onChange, resultCount, totalCount }: SearchBa
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Buscar porta ou processo..."
+        placeholder="Search port or process..."
         className="w-64 pl-9 pr-8 py-2 bg-surface-light border border-surface-lighter rounded-lg text-text text-sm placeholder-text-dim focus:outline-none focus:border-accent transition-colors"
       />
       {value && (
@@ -28,7 +28,7 @@ export function SearchBar({ value, onChange, resultCount, totalCount }: SearchBa
       )}
       {value && (
         <span className="ml-3 text-xs text-text-muted">
-          {resultCount} de {totalCount}
+          {resultCount} of {totalCount}
         </span>
       )}
     </div>
