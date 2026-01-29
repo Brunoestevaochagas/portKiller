@@ -8,6 +8,16 @@ A cross-platform desktop application to monitor open ports and kill processes. M
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.x-38bdf8)
 ![Platforms](https://img.shields.io/badge/Platforms-Windows%20%7C%20macOS%20%7C%20Linux-green)
 
+![PortKiller Screenshot](assets/screenshot.png)
+
+## Download
+
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Brunoestevaochagas/portKiller/releases/latest/download/PortKiller_1.0.0_x64-setup.exe)
+[![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/Brunoestevaochagas/portKiller/releases/latest)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/Brunoestevaochagas/portKiller/releases/latest/download/port-killer_1.0.0_amd64.deb)
+
+Or download from the [Releases page](https://github.com/Brunoestevaochagas/portKiller/releases/latest).
+
 ## Features
 
 - List all open ports (TCP/UDP)
@@ -25,17 +35,6 @@ A cross-platform desktop application to monitor open ports and kill processes. M
 | Windows | `netstat -ano` | `taskkill /PID` |
 | Linux | `ss -tulnp` | `kill -9` |
 | macOS | `lsof -iTCP -iUDP` | `kill -9` |
-
-## Download
-
-Download the latest version from the [Releases page](https://github.com/Brunoestevaochagas/portKiller/releases).
-
-| Platform | File |
-|----------|------|
-| Windows | `PortKiller_x.x.x_x64-setup.exe` or `.msi` |
-| macOS (Apple Silicon) | `PortKiller_x.x.x_aarch64.dmg` |
-| macOS (Intel) | `PortKiller_x.x.x_x64.dmg` |
-| Linux | `portkiller_x.x.x_amd64.deb` or `.AppImage` |
 
 ## Development
 
